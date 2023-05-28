@@ -85,14 +85,13 @@ const LoginPage = () => {
             </a>
           </div>
           <div className="text-center md:text-left">
-            <Link href="#" onClick={loginHandler}>
-              <button
-                className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2  uppercase rounded text-xs tracking-wider"
-                type="submit"
-              >
-                Login
-              </button>
-            </Link>{" "}
+            <button
+              onClick={() => loginHandler()}
+              className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2  uppercase rounded text-xs tracking-wider"
+              type="submit"
+            >
+              Login
+            </button>
           </div>
           <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
             Don't have an account?{" "}
