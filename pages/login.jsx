@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { authAction } from "../store/auth";
 import { Provider } from "react-redux";
 import store from "../store";
+
 const LoginPage = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();

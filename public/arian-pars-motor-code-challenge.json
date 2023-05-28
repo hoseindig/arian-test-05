@@ -1,0 +1,6 @@
+[
+  { "name": "Peugeot 206 v2", "params": { "volume": 1300, "cylinders": 4 } },
+  { "name": "Peugeot 206 v5", "params": { "volume": 1600, "cylinders": 4 } },
+  { "name": "Pride", "params": { "volume": 1300, "cylinders": 4 } },
+  { "name": "Samand", "params": { "volume": 1800, "cylinders": 4 } }
+]
