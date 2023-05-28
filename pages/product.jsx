@@ -15,6 +15,9 @@ const Product = ({ productList = [] }) => {
         // Simulating an asynchronous API call
         const response = await fetch("/arian-pars-motor-code-challenge.json");
         const jsonData = await response.json();
+        jsonData.forEach((element, i) => {
+          element.id = i;
+        });
         console.log(jsonData);
         setProducts(jsonData);
         dispatch(productActions.setProductData(jsonData));
