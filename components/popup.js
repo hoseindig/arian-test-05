@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-const Popup = ({ toggle = false }) => {
-  const [isOpen, setIsOpen] = useState(toggle);
+const Popup = ({ showModal }) => {
+  // const [isOpen, setIsOpen] = useState(toggle);
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(showModal);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,6 +21,8 @@ const Popup = ({ toggle = false }) => {
       <Button variant="primary" onClick={handleShow}>
         Launch demo modal
       </Button>
+      <p>{show ? "showModal" : "hideModal"}</p>
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>

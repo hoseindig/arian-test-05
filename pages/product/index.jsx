@@ -9,7 +9,10 @@ const Product = ({ productList = [] }) => {
   const dispatch = useDispatch();
 
   const [products, setProducts] = useState([]);
-
+  const [showModal, setShowModal] = useState(false);
+  const showEditBox = (p) => {
+    setShowModal((old) => true);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,7 +37,8 @@ const Product = ({ productList = [] }) => {
     <div className="content">
       <h1>Product</h1>
       {products.length}
-      <Popup toggle={true} />
+      <p>{showModal ? "showModal" : "hideModal"}</p>
+      <Popup showModal={showModal} />
 
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="flex items-center justify-center border border-gray-300">
@@ -54,8 +58,9 @@ const Product = ({ productList = [] }) => {
                     <td className="py-2 px-4">{i.name}</td>
                     <td className="py-2 px-4">{i.params.cylinders}</td>
                     <td className="py-2 px-4">{i.params.volume}</td>
-                    <td className="py-2 px-4">
-                      <Link href={`/product/${i.id}`}>Edit</Link>
+                    <td className="py-2 px-4" onClick={showEditBox}>
+                      {/* <Link href={`/product/${i.id}`}>Edit</Link> */}
+                      Edit
                     </td>
                   </tr>
                 );
