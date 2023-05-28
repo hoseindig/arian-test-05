@@ -1,0 +1,23 @@
+.footer-layout {
+  background-color: #264653;
+  color: #e9c46a;
+  font-size: 30px;
+  text-align: center;
+  padding: 20px;
+}
+
+.header-layout {
+  background-color: #264653;
+  color: #f4a261;
+  font-size: 30px;
+  text-align: center;
+  padding: 30px;
+  span {
+    font-size: 0.5em;
+  }
+}
+
+.content {
+  min-height: 700px;
+  padding: 15px;
+}
