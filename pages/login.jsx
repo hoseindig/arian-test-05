@@ -1,8 +1,23 @@
 import Footer from "@/components/footer";
 import Head from "next/head";
 import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
 
+import { authAction } from "../store/auth";
+import { Provider } from "react-redux";
+import store from "../store";
 const LoginPage = () => {
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const loginHandler = () => {
+    dispatch(authAction.login());
+    router.push("/product");
+  };
+
   return (
     <div className="flex items-center justify-center h-screen p-5">
       <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center my-2 mx-5 md:mx-0 md:my-0">
@@ -70,12 +85,14 @@ const LoginPage = () => {
             </a>
           </div>
           <div className="text-center md:text-left">
-            <button
-              className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
-              type="submit"
-            >
-              Login
-            </button>
+            <Link href="#" onClick={loginHandler}>
+              <button
+                className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2  uppercase rounded text-xs tracking-wider"
+                type="submit"
+              >
+                Login
+              </button>
+            </Link>{" "}
           </div>
           <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
             Don't have an account?{" "}
@@ -96,9 +113,9 @@ export default LoginPage;
 
 LoginPage.getLayout = (page) => {
   return (
-    <>
+    <Provider store={store}>
       {page}
       <Footer></Footer>
-    </>
+    </Provider>
   );
 };
