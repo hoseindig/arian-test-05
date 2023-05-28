@@ -6,14 +6,8 @@ const productSlice = createSlice({
   name: "product",
   initialState: initialCounterState,
   reducers: {
-    getProductData: async (state) => {
-      try {
-        const response = await fetch("/arian-pars-motor-code-challenge.json");
-        const jsonData = await response.json();
-        state.productList = jsonData;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+    setProductData: (state, action) => {
+      state.productList = action.payload;
     },
   },
 });

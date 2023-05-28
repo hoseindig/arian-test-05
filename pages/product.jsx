@@ -1,8 +1,12 @@
+import { productActions } from "../store/product";
+
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"];
 
 const Product = ({ productList = [] }) => {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -13,6 +17,7 @@ const Product = ({ productList = [] }) => {
         const jsonData = await response.json();
         console.log(jsonData);
         setProducts(jsonData);
+        dispatch(productActions.setProductData(jsonData));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
