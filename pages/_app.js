@@ -3,7 +3,7 @@ import Header from "@/components/header";
 import "@/styles/globals.css";
 
 import "@/styles/layout.scss";
-
+import "@/styles/product.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.css";

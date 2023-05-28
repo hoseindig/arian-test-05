@@ -1,0 +1,11 @@
+.productItems {
+  .item {
+    transition: 0.2s;
+
+    &:hover {
+      background-color: gray;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
