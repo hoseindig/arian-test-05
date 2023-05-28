@@ -1,8 +1,9 @@
-import { productActions } from "../store/product";
+import Link from "next/link";
+import { productActions } from "../../store/product";
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"];
+import Popup from "@/components/popup";
 
 const Product = ({ productList = [] }) => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const Product = ({ productList = [] }) => {
     <div className="content">
       <h1>Product</h1>
       {products.length}
+      <Popup toggle={true} />
 
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="flex items-center justify-center border border-gray-300">
@@ -42,6 +44,7 @@ const Product = ({ productList = [] }) => {
                 <th className="py-2 px-4 text-left">Name</th>
                 <th className="py-2 px-4 text-left">Cylinders</th>
                 <th className="py-2 px-4 text-left">Volume</th>
+                <th className="py-2 px-4 text-left">Action</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200 productItems">
@@ -51,6 +54,9 @@ const Product = ({ productList = [] }) => {
                     <td className="py-2 px-4">{i.name}</td>
                     <td className="py-2 px-4">{i.params.cylinders}</td>
                     <td className="py-2 px-4">{i.params.volume}</td>
+                    <td className="py-2 px-4">
+                      <Link href={`/product/${i.id}`}>Edit</Link>
+                    </td>
                   </tr>
                 );
               })}
