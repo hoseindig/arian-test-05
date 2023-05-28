@@ -11,6 +11,10 @@ const Header = () => {
         <Link href="about">
           <span>about</span>{" "}
         </Link>
+        |{" "}
+        <Link href="login">
+          <span>login</span>{" "}
+        </Link>
       </div>
     </>
   );
