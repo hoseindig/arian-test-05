@@ -9,10 +9,20 @@ const Product = ({ productList = [] }) => {
   const dispatch = useDispatch();
 
   const [products, setProducts] = useState([]);
+  const [selected, setSelected] = useState({});
   const [showModal, setShowModal] = useState(false);
   const showEditBox = (p) => {
+    setSelected(p);
     setShowModal((old) => true);
   };
+  const modalCloseHandler = (p) => {
+    setSelected({});
+    setShowModal((old) => false);
+  };
+  const modalPassData = (p) => {
+    console.log(p);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,8 +47,17 @@ const Product = ({ productList = [] }) => {
     <div className="content">
       <h1>Product</h1>
       {products.length}
-      <p>{showModal ? "showModal" : "hideModal"}</p>
-      <Popup showModal={showModal} />
+      {/* <p>{showModal ? "showModal" : "hideModal"}</p> */}
+
+      {showModal && (
+        <Popup
+          showModal={true}
+          modalClose={modalCloseHandler}
+          CurentItem={selected}
+          header="Item Edit"
+          onSaveData={modalPassData}
+        />
+      )}
 
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="flex items-center justify-center border border-gray-300">
@@ -52,13 +71,13 @@ const Product = ({ productList = [] }) => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200 productItems">
-              {products.map((i) => {
+              {products.map((item, index) => {
                 return (
-                  <tr className="item">
-                    <td className="py-2 px-4">{i.name}</td>
-                    <td className="py-2 px-4">{i.params.cylinders}</td>
-                    <td className="py-2 px-4">{i.params.volume}</td>
-                    <td className="py-2 px-4" onClick={showEditBox}>
+                  <tr className="item" key={index}>
+                    <td className="py-2 px-4">{item.name}</td>
+                    <td className="py-2 px-4">{item.params.cylinders}</td>
+                    <td className="py-2 px-4">{item.params.volume}</td>
+                    <td className="py-2 px-4" onClick={() => showEditBox(item)}>
                       {/* <Link href={`/product/${i.id}`}>Edit</Link> */}
                       Edit
                     </td>
