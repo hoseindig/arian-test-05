@@ -15,6 +15,21 @@
   span {
     font-size: 0.5em;
   }
+  a {
+    text-decoration: none;
+    color: white;
+    &:hover {
+      color: #f48e57;
+    }
+  }
+  .logout {
+    font-size: 0.5em;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover {
+      text-shadow: 0 0 5px;
+    }
+  }
 }
 
 .content {
