@@ -54,7 +54,7 @@ const Product = () => {
   return (
     <div className="content">
       <h1>Product</h1>
-      <p> {products.length}</p>
+      {/* <p> {products.length}</p> */}
       {/* <p>{productList && productList.length}</p> */}
       {/* <p>{showModal ? "showModal" : "hideModal"}</p> */}
 
@@ -105,7 +105,6 @@ const Product = () => {
                 <th className="py-2 px-4 text-left">Name</th>
                 <th className="py-2 px-4 text-left">Cylinders</th>
                 <th className="py-2 px-4 text-left">Volume</th>
-                <th className="py-2 px-4 text-left">Action</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200 productItems">
@@ -116,13 +115,6 @@ const Product = () => {
                       <td className="py-2 px-4">{item.name}</td>
                       <td className="py-2 px-4">{item.params.cylinders}</td>
                       <td className="py-2 px-4">{item.params.volume}</td>
-                      {/* <td
-                        className="py-2 px-4"
-                        onClick={() => showEditBox(item)}
-                      >
-                        <Link href={`/product/${i.id}`}>Edit</Link>
-                        Edit
-                      </td> */}
                     </tr>
                   );
                 })}
