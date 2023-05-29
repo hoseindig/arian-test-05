@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 const BeautifulTextbox = ({
   value = "",
   name = "",
+  type = "text",
   label = "",
   getChange,
   isDisabled = false,
@@ -19,7 +20,7 @@ const BeautifulTextbox = ({
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>{label}</Form.Label>
         <Form.Control
-          type="text"
+          type={type}
           placeholder="Password"
           className="border border-gray-300 rounded-md py-2 px-4 w-64 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={inputValue}

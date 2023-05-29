@@ -54,11 +54,13 @@ const Popup = ({
             />
             <MyInput
               label="cylinders"
+              type="number"
               getChange={(e) => getDataInput(e, "cylinders")}
               value={CurentItem.params.cylinders}
             />
             <MyInput
               label="volume"
+              type="number"
               value={CurentItem.params.volume}
               getChange={(e) => getDataInput(e, "volume")}
             />

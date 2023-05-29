@@ -1,4 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {
+  createSlice
+} from "@reduxjs/toolkit";
 // import myData from "../arian-pars-motor-code-challenge.json";
 // product
 const initialCounterState = {
@@ -16,9 +18,13 @@ const productSlice = createSlice({
       state.productEditList = data;
     },
     setEditProductData: (state, action) => {
+      let productEditList = state.productEditList
+      console.log("setEditProductData", action);
       const item = action.payload;
-      const findItem = state.productEditList.find((x) => x.id == item.id);
-      state.productList = data;
+      const findItemIndex = productEditList.findIndex((x) => x.id == item.id);
+      productEditList.splice(findItemIndex, 1)
+      productEditList.push(action.payload)
+      state.productEditList = productEditList;
     },
   },
 });

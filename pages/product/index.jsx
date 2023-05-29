@@ -5,10 +5,17 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Popup from "@/components/popup";
 
-const Product = ({ productList = [] }) => {
+const Product = () => {
+  const product = useSelector((state) => state.product);
+  console.log("productEditList", product.productEditList);
+
+  const productEditList = product.productEditList
+    ? product.productEditList
+    : [];
   const dispatch = useDispatch();
 
   const [products, setProducts] = useState([]);
+
   const [selected, setSelected] = useState({});
   const [showModal, setShowModal] = useState(false);
   const showEditBox = (p) => {
@@ -21,6 +28,7 @@ const Product = ({ productList = [] }) => {
   };
   const modalPassData = (p) => {
     console.log(p);
+    dispatch(productActions.setEditProductData(p));
   };
 
   useEffect(() => {
@@ -46,7 +54,8 @@ const Product = ({ productList = [] }) => {
   return (
     <div className="content">
       <h1>Product</h1>
-      {products.length}
+      <p> {products.length}</p>
+      {/* <p>{productList && productList.length}</p> */}
       {/* <p>{showModal ? "showModal" : "hideModal"}</p> */}
 
       {showModal && (
@@ -61,6 +70,8 @@ const Product = ({ productList = [] }) => {
 
       <div className="flex items-center justify-center h-screen bg-gray-100">
         <div className="flex items-center justify-center border border-gray-300">
+          <h4 className="p-2">Main List</h4>
+
           <table className="min-w-full divide-y divide-gray-200 bg-white ">
             <thead className="bg-gray-50">
               <tr>
@@ -86,23 +97,39 @@ const Product = ({ productList = [] }) => {
               })}
             </tbody>
           </table>
+          <hr />
+          <h4 className="p-2">Edited</h4>
+          <table className="min-w-full divide-y divide-gray-200 bg-white ">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="py-2 px-4 text-left">Name</th>
+                <th className="py-2 px-4 text-left">Cylinders</th>
+                <th className="py-2 px-4 text-left">Volume</th>
+                <th className="py-2 px-4 text-left">Action</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200 productItems">
+              {productEditList &&
+                productEditList.map((item, index) => {
+                  return (
+                    <tr className="item" key={index}>
+                      <td className="py-2 px-4">{item.name}</td>
+                      <td className="py-2 px-4">{item.params.cylinders}</td>
+                      <td className="py-2 px-4">{item.params.volume}</td>
+                      {/* <td
+                        className="py-2 px-4"
+                        onClick={() => showEditBox(item)}
+                      >
+                        <Link href={`/product/${i.id}`}>Edit</Link>
+                        Edit
+                      </td> */}
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
         </div>
       </div>
-
-      {/* <div className="flex flex-wrap justify-center">
-        {products.map((i) => {
-          return (
-            <div className="w-1/4 p-2">
-              <div className=" mx-auto rounded overflow-hidden shadow-lg p-1">
-                <div className="px-6 py-4">
-                  <div className="font-bold text-xl mb-2">{i.name}</div>
-                  <p className="text-gray-700 text-base">{"description"}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div> */}
     </div>
   );
 };
