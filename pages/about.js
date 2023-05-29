@@ -12,11 +12,11 @@ const About = () => {
 
 export default About;
 
-About.getLayout = (page) => {
-  return (
-    <>
-      {page}
-      <Footer></Footer>
-    </>
-  );
-};
+// About.getLayout = (page) => {
+//   return (
+//     <>
+//       {page}
+//       <Footer></Footer>
+//     </>
+//   );
+// };
